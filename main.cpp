@@ -15,18 +15,18 @@ int main(int argc, char **argv)
 {
     sockaddr_in * selfAddr = new (sockaddr_in);
     selfAddr->sin_family = AF_INET;
-    selfAddr->sin_port = 13;
+    selfAddr->sin_port = 7;
     selfAddr->sin_addr.s_addr = 0;
     
     sockaddr_in * remoteAddr = new (sockaddr_in);
     remoteAddr->sin_family = AF_INET;
     remoteAddr->sin_port = htons(44214);
-    remoteAddr->sin_addr.s_addr = inet_addr("127.0.0.1");
+    remoteAddr->sin_addr.s_addr = inet_addr("82.179.90.12");
     char *buf = new char[256];
     
     strcpy(buf, "Поставте максимум баллов\n");
     int msgLen = strlen(buf);
-    int mySocket = socket(AF_INET, SOCK_STREAM, 0);
+    int mySocket = socket(AF_INET, SOCK_DGRAM, 0);
     if (mySocket == -1){
         errHandler("Error open soket", 11);
     }
